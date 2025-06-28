@@ -2,17 +2,13 @@ import streamlit as st
 from main import fetch_emails
 from sklearn.feature_extraction.text import TfidfVectorizer
 import joblib
-import os
 # Load model
 model = joblib.load("model/spam_classifier.joblib")
 vectorizer = joblib.load("model/vectorizer.joblib")
 
 st.title("📧 Gmail Spam Scanner")
-email_input = st.text_input("Enter your Gmail address")
-password_input = st.text_input("Enter your Gmail App Password", type="password")
-os.environ["EMAIL"] = email_input
-os.environ["APP_PASSWORD"] = password_input
-
+EMAIL = st.text_input("Enter your Gmail address")
+PASSWORD = st.text_input("Enter your Gmail App Password", type="password")
 if st.button("Scan My Gmail Inbox"):
     with st.spinner("Fetching and scanning emails..."):
         emails = fetch_emails()
