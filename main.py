@@ -3,7 +3,7 @@ import email
 
 def fetch_emails():
     mail = imaplib.IMAP4_SSL("imap.gmail.com")
-    mail.login(EMAIL, APP_PASSWORD)
+    mail.login(EMAIL,PASSWORD)
     mail.select("inbox",'[Gmail]/Spam')
 
     _, data = mail.search(None, "ALL")
