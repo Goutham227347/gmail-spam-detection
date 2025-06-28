@@ -1,11 +1,6 @@
 import imaplib
 import email
-import os
-from dotenv import load_dotenv
-# Load environment variables
-load_dotenv()
-EMAIL = os.getenv("EMAIL")
-APP_PASSWORD = os.getenv("APP_PASSWORD")
+
 def fetch_emails():
     mail = imaplib.IMAP4_SSL("imap.gmail.com")
     mail.login(EMAIL, APP_PASSWORD)
